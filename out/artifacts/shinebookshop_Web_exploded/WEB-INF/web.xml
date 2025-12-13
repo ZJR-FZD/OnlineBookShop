@@ -11,7 +11,7 @@
   </context-param>
   <context-param>
     <param-name>ver</param-name>
-    <param-value>闲杂人等请勿靠近</param-value>
+    <param-value>管理员登录！</param-value>
   </context-param>
   <servlet>
     <servlet-name>admin</servlet-name>

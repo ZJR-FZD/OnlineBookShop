@@ -89,9 +89,27 @@ public class BookDaoImpl implements BookDao {
 	 */
 	@Override
 	public boolean bookDelById(int bookId) {
-		String sql = "SET FOREIGN_KEY_CHECKS = 0;delete from s_book where bookId=?";
-		int i = DbUtil.excuteUpdate(sql, bookId);
-		return i > 0 ? true : false;
+		try {
+			// 第一步：检查是否有订单引用这本书
+			String checkSql = "SELECT COUNT(*) as count FROM s_orderitem WHERE bookId=?";
+			List<Map<String, Object>> checkResult = DbUtil.executeQuery(checkSql, new Object[]{bookId});
+			long count = checkResult.size() > 0 ? (Long)checkResult.get(0).get("count") : 0L;
+
+			// 第二步：如果有订单引用，先删除订单项
+			if (count > 0) {
+				String delOrderItemSql = "DELETE FROM s_orderitem WHERE bookId=?";
+				DbUtil.excuteUpdate(delOrderItemSql, new Object[]{bookId});
+			}
+
+			// 第三步：删除图书
+			String delBookSql = "DELETE FROM s_book WHERE bookId=?";
+			int i = DbUtil.excuteUpdate(delBookSql, new Object[]{bookId});
+
+			return i > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	/**
@@ -117,9 +135,20 @@ public class BookDaoImpl implements BookDao {
 	// 批量删除
 	@Override
 	public boolean bookBatDelById(String ids) {
-		String sql = "delete from s_book where bookId in(" + ids + ")";
-		int i = DbUtil.excuteUpdate(sql);
-		return i > 0 ? true : false;
+		try {
+			// 第一步：删除这些图书相关的所有订单项
+			String delOrderItemSql = "DELETE FROM s_orderitem WHERE bookId IN(" + ids + ")";
+			DbUtil.excuteUpdate(delOrderItemSql, new Object[0]);
+
+			// 第二步：删除图书
+			String delBookSql = "DELETE FROM s_book WHERE bookId IN(" + ids + ")";
+			int i = DbUtil.excuteUpdate(delBookSql, new Object[0]);
+
+			return i > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	// 随机查询一定数量的书
