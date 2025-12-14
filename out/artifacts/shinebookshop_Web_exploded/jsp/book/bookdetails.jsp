@@ -256,7 +256,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <span class="glyphicon glyphicon-ok"></span>
-                已成功加入购物车！
+                已加入购物车！
             </div>
             <div class="modal-footer">
                 <a class="btn btn-default" data-dismiss="modal">继续购物</a>

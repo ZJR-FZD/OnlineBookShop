@@ -21,42 +21,103 @@
 <script type="text/javascript" src="js/book/landing.js"></script>
 <link href="css/book/head_footer.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	.wrapper{
-		min-height:500px;
-	}
-	/* 分页样式 */
-	.wrapper .pager{
-		border-top:1px #eee solid;
-		padding-top:15px; 
-	}
-	.wrapper .pager .page-div{
-		display: inline-block;
-		width:110px;
-	}
-	.wrapper .homePage,.wrapper .prePage,.wrapper .page-go,.wrapper .nextPage,.lastPage{
-		border-radius:15px;
-		color:#52de92;
-	}
-	
-	
-	.wrapper #page-input{
-		display:inline-block;
-		width:60px;
-		border-radius: 10px;
-	}
-	.wrapper .bookImg{
-		width:50px;
-	}
-	.wrapper .funbtn{
-		margin:10px 0;
-	}
-	.wrapper .funbtn a{
-		margin-right:10px;
-	}
-	
+    body{
+        background:#f5f3ff;
+    }
 
-</style>	
+    .wrapper{
+        min-height:500px;
+        padding:30px 0;
+    }
 
+    /* 表格整体 */
+    table{
+        background:#fff;
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:0 8px 24px rgba(108,99,255,.15);
+    }
+
+    /* 表头 */
+    table thead tr{
+        background: linear-gradient(135deg,#6c63ff,#8a84ff);
+        color:#554fd8;
+    }
+
+    table thead th{
+        text-align:center;
+        font-weight:600;
+        border-bottom:none !important;
+    }
+
+    table td{
+        vertical-align:middle !important;
+    }
+
+    /* 订单日期行 */
+    tr.active{
+        background:#f3f1ff !important;
+        font-weight:600;
+        color:#554fd8;
+    }
+
+    /* 图片 */
+    .wrapper .bookImg{
+        width:50px;
+        border-radius:6px;
+    }
+
+    /* 状态文字 */
+    .wrapper p{
+        margin:0;
+        color:#554fd8;
+    }
+
+    /* 按钮 */
+    .btn-success{
+        background:#6c63ff;
+        border-color:#6c63ff;
+    }
+
+    .btn-success:hover{
+        background:#554fd8;
+        border-color:#554fd8;
+    }
+
+    /* 分页 */
+    .pager{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:12px;
+        padding:25px 0;
+        border-top:1px solid #e0dcff;
+    }
+
+    .pager button{
+        border-radius:20px;
+        color:#6c63ff;
+        border:1px solid #dcd7ff;
+        background:#fff;
+    }
+
+    .pager button:hover{
+        background:#6c63ff;
+        color:#fff;
+    }
+
+    #page-input{
+        border-radius:12px;
+        border:1px solid #dcd7ff;
+    }
+
+    /* 标题 */
+    h2{
+        color:#554fd8;
+        font-weight:700;
+        margin-bottom:20px;
+    }
+</style>
 </head>
 <body>
 	<div class="container-fullid">
@@ -161,7 +222,7 @@
 	}
 	//按钮事件
 	$(".homePage").click(function(){
-		window.location="${bsePath}OrderServlet?action=list&page=1";
+		window.location="${basePath}OrderServlet?action=list&page=1";
 	})
 	$(".prePage").click(function(){
 		window.location="${basePath}OrderServlet?action=list&page=${pageBean.prePage}";

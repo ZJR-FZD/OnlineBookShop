@@ -148,7 +148,7 @@
 	  	<div class="modal-dialog modal-sm">
 	    	<div class="modal-content">
 	    		<div class="modal-body" style="color:green;font-size:24px;">
-				  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp已成功加入购物车！
+				  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp已加入购物车！
 				</div>
 
 	      		<div class="modal-footer">

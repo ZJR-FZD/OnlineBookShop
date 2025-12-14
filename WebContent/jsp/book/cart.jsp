@@ -311,20 +311,7 @@
 								</div>
 								
 							</div>
-							
-							<div class="form-group">
-								<label for="ck_code" class="col-md-4  control-label">验证码：</label>
-								<div class="col-md-3" >
-									<input class="form-control" type="text" name="code" id="ck_code" >
-									<span class="Validform_checktip">&nbsp</span>
-								</div>
-								
-								<div class="col-md-4" style="padding:0;">
-									<img class="col-md-8" id="imgCode" src="CodeServlet?action=code" alt="" style="padding:0;width:100px;height:38px;" />
-									<span onclick="reCode()" class="col-md-4 glyphicon glyphicon-refresh " aria-hidden="true" style="padding:0 0 0 5px;font-size: 24px;"></span>
-								</div>
-								
-							</div>
+
 							<div class="form-group">
 								<label class="col-md-2 control-label col-md-offset-4">
 									<button class="btn btn-success btn-block" type="submit" >登录</button>
@@ -361,15 +348,7 @@
 				datatype:"*",
 				nullmsg:"*请输入密码！",
 				errormsg:"*密码输入不正确，请重新输入"
-			},
-			{ 
-				ele:"#ck_code",
-				datatype:"*",
-				ajaxurl:"CodeServlet?action=ckCode",
-				nullmsg:"*请输入验证码！",
-				errormsg:"*验证码输入不正确"
 			}
-		
 		]);
 		
 	
@@ -448,13 +427,6 @@
 			},"json")
 			return false;
 		})
-		
-		
-		
-		//验证码 
-	function reCode(){
-		$("#imgCode").prop("src","CodeServlet?action=code&"+new Date().getTime());
-	}
 </script>
 </body>
 </html>
