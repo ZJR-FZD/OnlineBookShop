@@ -11,10 +11,6 @@ import com.shine.bookshop.util.DateUtil;
 import com.shine.bookshop.util.DbUtil;
 
 public class AdminDaoImpl implements AdminDao {
-	/**
-	 * @param user 传递要登录的用户信息
-	 * @return 返回一个boolean值，true登录成功，false失败
-	 */
 	@Override
 	public boolean userLogin(Admin admin) {
 		boolean flag=false;

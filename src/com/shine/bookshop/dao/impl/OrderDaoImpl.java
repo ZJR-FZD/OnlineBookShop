@@ -10,9 +10,6 @@ import com.shine.bookshop.bean.User;
 import com.shine.bookshop.dao.OrderDao;
 import com.shine.bookshop.util.DbUtil;
 
-/** 
-* @version 创建时间：2017年10月27日 下午11:12:29 
-*/
 public class OrderDaoImpl implements OrderDao {
 	/**
 	 * 向s_order插入一条订单记录

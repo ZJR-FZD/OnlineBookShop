@@ -8,14 +8,11 @@ import com.shine.bookshop.bean.OrderItem;
 import com.shine.bookshop.dao.OrderItemDao;
 import com.shine.bookshop.util.DbUtil;
 
-/** 
-* @version 创建时间：2017年10月28日 上午12:37:47 
-*/
 public class OrderItemDaoImpl implements OrderItemDao {
 
 	@Override
 	public boolean orderAdd(OrderItem orderItem) {
-		String sql="insert into s_orderItem(bookId,orderId,quantity) values(?,?,?)";
+		String sql="insert into s_orderitem(bookId,orderId,quantity) values(?,?,?)";
 		
 		int i= DbUtil.excuteUpdate(sql,orderItem.getBookId(),orderItem.getOrderId(),orderItem.getQuantity());
 		
@@ -25,7 +22,7 @@ public class OrderItemDaoImpl implements OrderItemDao {
 	@Override
 	public List<OrderItem> findItemByOrderId(int orderId) {
 		List<OrderItem> lo=new ArrayList<>();
-		String sql="select * from s_orderItem where orderId=?";
+		String sql="select * from s_orderitem where orderId=?";
 		List<Map<String, Object>> query = DbUtil.executeQuery(sql, orderId);
 		if(query.size()>0) {
 			for(Map<String,Object> map:query) {

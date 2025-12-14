@@ -111,11 +111,7 @@ public class UserDaoImpl implements UserDao {
 		}
 		return u;
 	}
-	/**
-	 * 
-	 * @param admin 更新用户,根据传过来的id
-	 * @return boolean
-	 */
+
 	@Override
 	public boolean userUpdate(User user) {
 		String sql="update s_user set userPassWord=?,name=?,sex=?,age=?,tell=?,address=?,enabled=? where userId =?";
