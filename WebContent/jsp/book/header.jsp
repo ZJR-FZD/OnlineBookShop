@@ -3,15 +3,13 @@
 <div class="head">
 			<div class="top">
 				<div class="container">
-
-
 					<div class="pull-right">
 						<c:choose>
 							<c:when test="${empty landing}">
 								<div class="top-right">
-									您好，请
-									<a href="jsp/book/reg.jsp?type=login">登录</a>
-									<a href="jsp/book/reg.jsp?type=reg">注册</a>
+									<a href="jsp/book/reg.jsp?type=login">用户登录</a>
+									<a href="jsp/book/reg.jsp?type=reg">用户注册</a>
+									<a href="jsp/admin/login.jsp" class="admin-login-btn">管理员登录</a>
 								</div>
 							</c:when>
 							<c:otherwise>
@@ -20,9 +18,10 @@
 									    ${landing.name} <span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu dropdown-menu-right">
-									    <li><a href="OrderServlet?action=list" >我的订单</a></li>
-<%--									    <li><a href="#">我的资料</a></li>--%>
-									    <li><a style="border-top:1px #ccc solid" href="UserServlet?action=off" onClick="return confirm('确定要退出登陆了么？')">退 出 登 录</a></li>
+									    <li><a href="OrderServlet?action=list">📦 我的订单</a></li>
+                                        <li><a href="UserServlet?action=profile&id=${landing.userId}">👤 个人资料</a></li>
+                                        <li><a class="logout-btn" href="UserServlet?action=off" onClick="return confirm('确定要退出登录吗？')">🚪 退出登录</a></li>
+                                        <li><a class="delete-account-btn" href="UserServlet?action=delete&id=${landing.userId}" onClick="return confirm('⚠️ 警告：注销账号后将无法恢复，确定要注销账号吗？')">🗑️ 注销账号</a></li>
 									</ul>
 								</div>
 							</c:otherwise>
@@ -32,13 +31,21 @@
 			</div>
 			<div class="mid container">
 				<div class="row">
-					<a class="logo col-md-5"  title="网上书城">
-						<span>网上书城</span>
-					</a>
+					<div class="logo col-md-5" title="网上书城">
+                        <span>欢迎来到当当小书屋~</span>
+                    </div>
+
+                   <!-- 首页按钮 -->
+                   <div class="col-md-1" style="padding: 0;">
+                       <a href="jsp/book/index.jsp" class="home-btn" title="返回首页">
+                           🏠 首页
+                       </a>
+                   </div>
+
 					<div class="search col-md-4">
 						<div class="input-group">
 							<form action="BookList2" method="get">
-		     	 				<input style="float: left;width: 160px;" type="text" class="form-control" name="seachname" placeholder="输入要搜索的图书...">
+		     	 				<input style="float: left;width: 160px;" type="text" class="form-control" name="searchname" placeholder="输入要搜索的图书...">
 		       					&nbsp;&nbsp;&nbsp;
 		       					<input style="float: left;width: 55px;" class="btn btn-default" type="submit" value="搜索"/>
 							</form>
@@ -61,15 +68,6 @@
 							<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
 						</a>
 					</div>
-				</div>
-				<div class="navbar">
-					<ul class="nav navbar-nav">
-				        <li class="active"><a href="jsp/book/index.jsp">首 页 <span class="sr-only">(current)</span></a></li>
-						<li><a href="#">分 类</a></li>
-						<li><a href="#">新 品</a></li>
-						<li><a href="#">优 惠</a></li>
-						<li><a href="#">畅销榜</a></li>
-			      	</ul>
 				</div>
 			</div>
 		</div>

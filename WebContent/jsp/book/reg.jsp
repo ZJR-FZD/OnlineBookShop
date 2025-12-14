@@ -156,22 +156,8 @@
 									<input type="password" name="passWord" id="l_passWord" class="form-control">
 									<span class="Validform_checktip">&nbsp</span>
 								</div>
-
 							</div>
 
-							<div class="form-group">
-								<label for="ck_code" class="col-md-4  control-label">验证码：</label>
-								<div class="col-md-3" >
-									<input class="form-control" type="text" name="code" id="ck_code" >
-									<span class="Validform_checktip">&nbsp</span>
-								</div>
-
-								<div class="col-md-4" style="padding:0;">
-									<img class="col-md-8" id="imgCode" src="CodeServlet?action=code" alt="" style="padding:0;width:100px;height:38px;" />
-									<span onclick="reCode()" class="col-md-4 glyphicon glyphicon-refresh " aria-hidden="true" style="padding:0 0 0 5px;font-size: 24px;"></span>
-								</div>
-
-							</div>
 							<div class="form-group">
 								<label class="col-md-2 control-label col-md-offset-4">
 									<input class="btn btn-success btn-block" type="submit" value="登录">
@@ -179,7 +165,6 @@
 								<label class="col-md-2 control-label">
 									<input class="btn btn-warning btn-block" type="reset" value="重置">
 								</label>
-
 							</div>
 						</form>
 					</div>
@@ -207,13 +192,6 @@
 	       $('#myTab a[href="#tab_login"]').tab('show')
 	       break;
 	}
-
-	//验证码
-	function reCode(){
-		$("#imgCode").prop("src","CodeServlet?action=code&"+new Date().getTime());
-	}
-
-
 
 </script>
 </body>

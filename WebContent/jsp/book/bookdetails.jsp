@@ -3,143 +3,268 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String path = request.getContextPath();
-	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-	pageContext.setAttribute("basePath", basePath);
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    pageContext.setAttribute("basePath", basePath);
 %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<base href="${basePath}">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>网上书城</title>
-	<link rel="stylesheet" href="bs/css/bootstrap.css">
-	<script type="text/javascript" src="bs/js/jquery.min.js"></script>
-	<script type="text/javascript" src="bs/js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/book/landing.js"></script>
-	<link href="css/book/head_footer.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="js/book/addcart.js"></script>
-	<style type="text/css">
-		.wrapper .pro_info{
-			border-bottom: 1px #ccc solid;
-			line-height: 34px;
-			margin-top:20px;
-		}
-		.wrapper .pro_info tr td:first-child{
-			font-weight: bold;
+    <base href="${basePath}">
+    <meta charset="UTF-8">
+    <title>网上书城 - 商品详情</title>
 
-		}
-		.wrapper .pro_info i{
-			color:red;
-			font-size:22px;
-		}
-		.wrapper .buy_pro{
-			margin-top:20px;
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <script src="bs/js/jquery.min.js"></script>
+    <script src="bs/js/bootstrap.js"></script>
+    <script src="js/book/landing.js"></script>
+    <script src="js/book/addcart.js"></script>
+    <link href="css/book/head_footer.css" rel="stylesheet">
 
-		}
-		.wrapper .pro_desc{
-			margin:10px;
-		}
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
 
-		.wrapper .pro_desc h3{
-			border-bottom: 1px #ccc solid;
-			padding:10px;
-		}
-		.wrapper .pro_desc div{
-			text-indent: 2em;
-			line-height: 2em;
-		}
+        /* ===== 主体卡片 ===== */
+        .wrapper .main {
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,.08);
+        }
 
-	</style>
+        /* ===== 商品图片 ===== */
+        .pro-img {
+            border-radius: 16px;
+            box-shadow: 0 12px 28px rgba(0,0,0,.15);
+        }
+
+        /* ===== 商品信息卡 ===== */
+        .pro_info {
+            background: #fafbff;
+            border-radius: 16px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .pro_info tr {
+            border-bottom: 1px dashed #e5e7f2;
+        }
+
+        .pro_info tr:last-child {
+            border-bottom: none;
+        }
+
+        .pro_info td {
+            padding: 8px 6px;
+            vertical-align: top;
+        }
+
+        .pro_info td:first-child {
+            width: 90px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .pro_info h2 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pro_info i {
+            font-size: 28px;
+            font-style: normal;
+            font-weight: bold;
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ===== 加入购物车按钮 ===== */
+        .btn-buy {
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            border: none;
+            color: #fff;
+            border-radius: 30px;
+            padding: 10px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all .3s;
+        }
+
+        .btn-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102,126,234,.45);
+        }
+
+        .buy_pro {
+            margin-top: 20px;
+        }
+
+        .buy_pro + p {
+            font-size: 13px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* ===== 图书简介 ===== */
+        .pro_desc {
+            margin-top: 30px;
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.06);
+        }
+
+        .pro_desc h3 {
+            border-left: 5px solid #667eea;
+            padding-left: 12px;
+            font-weight: 700;
+        }
+
+        .pro_desc div {
+            margin-top: 15px;
+            line-height: 1.9;
+            color: #555;
+            text-indent: 2em;
+        }
+
+        /* ===== 弹窗样式 ===== */
+        .modal-content {
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .modal-body {
+            font-size: 22px;
+            color: #4caf50;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .modal-footer {
+            background: #fafbff;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-top: none;
+        }
+
+        .modal-footer .btn-default {
+            background: #f1f3ff;
+            border: none;
+            color: #667eea;
+            border-radius: 30px;
+            padding: 8px 18px;
+        }
+
+        .modal-footer .btn-success {
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            border: none;
+            border-radius: 30px;
+            padding: 8px 22px;
+        }
+    </style>
 </head>
+
 <body>
 
-	<div class="container-fullid">
-		<%@include file="header.jsp" %>
-		<div class="wrapper">
-			<!-- main start -->
-			<div class="main container">
-				<div class="sub-nav">
-					<ol class="breadcrumb">
-  						<li><a href="jsp/book/index.jsp">主页</a></li>
-						<li><a href="#">${bookInfo.catalog.catalogName}</a></li>
-						<li class="active">${bookInfo.bookName}</li>
-					</ol>
-				</div>
-				<div class="row">
-					<div class="col-md-5">
-						<img class="img-responsive" src="${bookInfo.upLoadImg.imgSrc}" />
-					</div>
-					<div class="col-md-7">
-						<table class="pro_info">
-								<tr>
-									<td colspan="2"><h2>${bookInfo.bookName}</h2></td>
-								</tr>
-								<tr>
-									<td>价格：</td>
-									<td><i>￥${bookInfo.price}</i></td>
-								</tr>
-								<tr>
-									<td>图书编号：</td>
-									<td>${bookInfo.bookId}</td>
-								</tr>
-								<tr>
-									<td>图书分类：</td>
-									<td>${bookInfo.catalog.catalogName}</td>
-								</tr>
-								<tr>
-									<td>作者：</td>
-									<td>${bookInfo.author}</td>
-								</tr>
-								<tr>
-									<td>出版社：</td>
-									<td>${bookInfo.press}</td>
-								</tr>
-								<tr>
-									<td>上架日期：</td>
-									<td>${bookInfo.addTime}</td>
-								</tr>
-								<tr>
-									<td>服务：</td>
-									<td>由书城 发货,并提供售后服务,预计三天内送达，我们会全力加快为您服务，谢谢！</td>
-								</tr>
-							</table>
-						<p class="buy_pro">
-								<a class="btn btn-info" href="#">立即购买</a>
-								<button type="button" class="btn btn-danger" onclick="addToCart(${bookInfo.bookId})" data-toggle="modal" data-target=".bs-example-modal-sm">加入购物车</button>
-						</p>
-						<p>温馨提示：支持7天无理由退货</p>
-					</div>
+<div class="container-fullid">
+    <%@include file="header.jsp" %>
 
-				</div>
-				<div class="row pro_desc">
-					<h3>图书简介</h3>
-					<div>${bookInfo.description}</div>
-				</div>
+    <div class="wrapper">
+        <div class="main container">
 
-			</div>
+            <!-- 面包屑 -->
+            <ol class="breadcrumb">
+                <li><a href="jsp/book/index.jsp">主页</a></li>
+                <li><a href="#">${bookInfo.catalog.catalogName}</a></li>
+                <li class="active">${bookInfo.bookName}</li>
+            </ol>
 
+            <!-- 商品主体 -->
+            <div class="row">
+                <div class="col-md-5">
+                    <img class="img-responsive pro-img"
+                         src="${bookInfo.upLoadImg.imgSrc}">
+                </div>
 
-		</div>
+                <div class="col-md-7">
+                    <table class="pro_info">
+                        <tr>
+                            <td colspan="2"><h2>${bookInfo.bookName}</h2></td>
+                        </tr>
+                        <tr>
+                            <td>价格</td>
+                            <td><i>￥${bookInfo.price}</i></td>
+                        </tr>
+                        <tr>
+                            <td>编号</td>
+                            <td>${bookInfo.bookId}</td>
+                        </tr>
+                        <tr>
+                            <td>分类</td>
+                            <td>${bookInfo.catalog.catalogName}</td>
+                        </tr>
+                        <tr>
+                            <td>作者</td>
+                            <td>${bookInfo.author}</td>
+                        </tr>
+                        <tr>
+                            <td>出版社</td>
+                            <td>${bookInfo.press}</td>
+                        </tr>
+                        <tr>
+                            <td>上架</td>
+                            <td>${bookInfo.addTime}</td>
+                        </tr>
+                        <tr>
+                            <td>服务</td>
+                            <td>书城自营 · 三日内送达 · 支持7天无理由退货</td>
+                        </tr>
+                    </table>
 
-		<%@include file="footer.jsp" %>
-	</div>
-<!--弹窗盒子start -->
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  	<div class="modal-dialog modal-sm">
-    	<div class="modal-content">
-    		<div class="modal-body" style="color:green;font-size:24px;">
-			  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp商品已成功加入购物车！
-			</div>
+                    <p class="buy_pro">
+                        <button class="btn btn-buy"
+                                onclick="addToCart(${bookInfo.bookId})"
+                                data-toggle="modal"
+                                data-target=".bs-example-modal-sm">
+                            加入购物车
+                        </button>
+                    </p>
+                    <p>温馨提示：正品保障 · 售后无忧</p>
+                </div>
+            </div>
 
-      		<div class="modal-footer">
-      			<a href="javascript:void(0)" type="button" class="btn btn-default" data-dismiss="modal">返回继续购物</a>
-		        <a href="jsp/book/cart.jsp" type="button" class="btn btn-success">立即去结算</a>
-		    </div>
-    	</div>
-  	</div>
+            <!-- 简介 -->
+            <div class="pro_desc">
+                <h3>图书简介</h3>
+                <div>${bookInfo.description}</div>
+            </div>
+
+        </div>
+    </div>
+
+    <%@include file="footer.jsp" %>
 </div>
-<!--弹窗盒子end -->
+
+<!-- 加入购物车弹窗 -->
+<div class="modal fade bs-example-modal-sm">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <span class="glyphicon glyphicon-ok"></span>
+                已成功加入购物车！
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-default" data-dismiss="modal">继续购物</a>
+                <a class="btn btn-success" href="jsp/book/cart.jsp">查看购物车</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

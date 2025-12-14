@@ -95,11 +95,11 @@ public class BookManageServlet extends HttpServlet {
 		case "batDel":
 			bookBatDel(request,response);
 			break;
-		case "seach":
-			seachBook(request,response);
+		case "search":
+			searchBook(request,response);
 		}
 	}
-	private void seachBook(HttpServletRequest request, HttpServletResponse response) 
+	private void searchBook(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int curPage = 1;
 		String page = request.getParameter("page");

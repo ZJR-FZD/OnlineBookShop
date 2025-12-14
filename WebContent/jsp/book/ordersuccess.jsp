@@ -21,26 +21,72 @@
 <script type="text/javascript" src="js/book/landing.js"></script>
 <link href="css/book/head_footer.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-	.wrapper{
-		min-height:500px;
-	}
-	.wrapper .main .info{
-		width:900px;
-		margin:70px auto 0;
-		padding:50px;
-		border:1px #ccc solid;
-		font-size: 24px;
-	}
-	.wrapper .main .info i{
-		color:red;
-		
-	}
-	.wrapper .main .info .op{
-		width: 300px;
-		margin:20px auto 0;
-	}
-	
-}
+	.wrapper {
+        min-height: 500px;
+        background: linear-gradient(135deg, #f5f7ff, #fdfcff);
+    }
+
+    /* 成功卡片 */
+    .wrapper .main .info {
+        width: 900px;
+        margin: 80px auto 0;
+        padding: 50px 60px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        font-size: 22px;
+    }
+
+    /* 强调文字（订单号、金额） */
+    .wrapper .main .info i {
+        color: #667eea;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    /* 左侧成功图标 */
+    .wrapper .main .info img {
+        width: 120px;
+    }
+
+    /* 操作按钮区域 */
+    .wrapper .main .info .op {
+        width: 340px;
+        margin: 30px auto 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* 查看订单（主按钮） */
+    .wrapper .main .info .op .btn-success {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border: none;
+        border-radius: 30px;
+        padding: 10px 22px;
+        font-size: 16px;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .wrapper .main .info .op .btn-success:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(102, 126, 234, 0.4);
+    }
+
+    /* 返回首页（次按钮） */
+    .wrapper .main .info .op .btn-default {
+        background: #f1f3ff;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 22px;
+        font-size: 16px;
+        color: #667eea;
+        transition: all 0.3s ease;
+    }
+
+    .wrapper .main .info .op .btn-default:hover {
+        background: #e4e7ff;
+    }
 </style>
 
 </head>

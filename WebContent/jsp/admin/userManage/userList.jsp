@@ -12,9 +12,10 @@
 <base href="${basePath}">
 	<meta charset="UTF-8">
 	<title>用户管理界面</title>
-	<link rel="stylesheet" href="bs/css/bootstrap.css">
 	<script type="text/javascript" src="bs/js/jquery.min.js"></script>
-	<script type="text/javascript" src="bs/js/bootstrap.js"></script> 
+	<script type="text/javascript" src="bs/js/bootstrap.js"></script>
+	<link rel="stylesheet" href="bs/css/bootstrap.css">
+	<link rel="stylesheet" href="bs/css/bootstrap-purple-theme.css">
 	<link rel="stylesheet" href="css/admin/adminManage/userList.css">
 	<style type="text/css">
 		
@@ -33,7 +34,7 @@
 			<div class="search col-md-4">
 						<div class="input-group">
 							<form action="jsp/admin/UserManageServlet" method="get">
-								<input type="hidden" value="seach" name="action">
+								<input type="hidden" value="search" name="action">
 		     	 				<input style="float: left;width: 160px;" type="text" class="form-control" name="username" placeholder="输入要搜索的用户名...">
 		       					&nbsp;&nbsp;&nbsp;
 		       					<input style="float: left;width: 55px;" class="btn btn-default" type="submit" value="搜索"/>

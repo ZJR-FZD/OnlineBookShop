@@ -118,7 +118,7 @@
 						</c:when>
 						<c:otherwise>
 							<tbody>
-								<tr><td colspan="6"><h2 class="text-center">还莫有订单呢！</h2></td></tr>
+								<tr><td colspan="6"><h2 class="text-center">您还没有订单！</h2></td></tr>
 							</tbody>
 						</c:otherwise>
 					</c:choose>

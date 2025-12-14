@@ -25,23 +25,168 @@
 <script type="text/javascript" src="bs/validform/Validform_v5.3.2_min.js"></script> 
 <script type="text/javascript" src="js/book/user_reg_login.js"></script>
 <style type="text/css">
+/* ===== 购物车 · 蓝紫主题 ===== */
+
 .wrapper {
-	minheight: 400px;
+    min-height: 400px;
 }
 
 .wrapper .main {
-	padding: 20px 50px;
+    padding: 30px 50px;
 }
 
-.wrapper .main .content .spinner a {
-	display: inline-block;
+/* 标题 */
+.wrapper h3 span {
+    font-size: 26px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.wrapper .main .content .spinner input {
-	display: inline-block;
-	width: 30px;
-	height: 22px;
-	border-radius: 3px;
+/* 表格整体 */
+.table {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.table th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    font-size: 15px;
+    border: none !important;
+    text-align: center;
+}
+
+.table td {
+    vertical-align: middle !important;
+    text-align: center;
+    border-color: #eee !important;
+}
+
+/* 商品信息 */
+.table td a {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.table td a:hover {
+    color: #764ba2;
+}
+
+/* 数量 spinner */
+.spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.spinner input {
+    width: 45px;
+    height: 28px;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.spinner .btn {
+    border-radius: 50%;
+    padding: 2px 8px;
+    background: #f5f7fa;
+    border: 1px solid #ddd;
+}
+
+.spinner .btn:hover {
+    background: #667eea;
+    color: #fff;
+}
+
+/* 小计价格 */
+.price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ff4757;
+}
+
+/* 底部合计 */
+#totPrice b {
+    font-size: 26px;
+    color: #ff4757;
+}
+
+/* 按钮统一 */
+.btn {
+    border-radius: 25px !important;
+    font-weight: 600;
+    transition: all .3s;
+}
+
+/* 蓝紫主按钮 */
+.btn-success,
+#tosettle {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+    border: none !important;
+    color: #fff !important;
+}
+
+.btn-success:hover,
+#tosettle:hover {
+    box-shadow: 0 8px 25px rgba(102,126,234,0.45);
+    transform: translateY(-2px);
+}
+
+/* 温和版危险按钮（灰紫系） */
+.btn-danger {
+    background: #f1f2f6 !important;
+    color: #666 !important;
+    border: 1px solid #ddd !important;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #ff6b81, #ff4757) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+}
+
+/* 空购物车 */
+.table td[colspan] {
+    color: #666;
+    font-weight: 600;
+}
+
+.table td[colspan] a {
+    color: #667eea;
+    font-weight: 700;
+}
+
+/* ===== 登录 Modal 蓝紫化 ===== */
+
+.modal-content {
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+}
+
+.modal-title {
+    font-weight: 700;
+}
+
+.modal .btn-success {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+}
+
+.modal .btn-warning {
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    border: none;
+    color: #fff;
 }
 </style>
 
@@ -122,7 +267,7 @@
 									<td colspan="6"
 										style="height: 200px; line-height: 100px; font-size: 24px;">
 										购物车内暂时没有商品， <a style="font-size: 24px; color: red"
-										href="BookList">去购物>></a>
+										href="BookList">去购物>>></a>
 									</td>
 								</tr>
 							</c:otherwise>

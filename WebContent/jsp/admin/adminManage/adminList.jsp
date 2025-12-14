@@ -12,9 +12,10 @@
 <base href="${basePath}">
 	<meta charset="UTF-8">
 	<title>用户管理界面</title>
-	<link rel="stylesheet" href="bs/css/bootstrap.css">
 	<script type="text/javascript" src="bs/js/jquery.min.js"></script>
-	<script type="text/javascript" src="bs/js/bootstrap.js"></script> 
+	<script type="text/javascript" src="bs/js/bootstrap.js"></script>
+	<link rel="stylesheet" href="bs/css/bootstrap.css">
+	<link rel="stylesheet" href="bs/css/bootstrap-purple-theme.css">
 	<link rel="stylesheet" href="css/admin/adminManage/userList.css">
 </head>
 <body>

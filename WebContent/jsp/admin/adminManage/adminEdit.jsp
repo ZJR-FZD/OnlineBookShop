@@ -15,6 +15,62 @@
 	<link rel="stylesheet" type="text/css" href="bs/validform/style.css">
 	<script type="text/javascript" src="bs/validform/Validform_v5.3.2_min.js"></script> 
 	<script type="text/javascript" src="js/admin/adminManage/adminEdit.js"></script>
+	<style>
+        body{
+            background: linear-gradient(135deg,#eef2ff,#f5f3ff);
+        }
+
+        h2{
+            color:#5a4fcf;
+            font-weight:600;
+            margin:30px 0;
+        }
+
+        .container{
+            background:#fff;
+            padding:40px 20px;
+            border-radius:12px;
+            box-shadow:0 8px 25px rgba(88,80,236,.18);
+            margin-top:40px;
+        }
+
+        /* label 颜色 */
+        label.control-label{
+            color:#4f46e5;
+            font-weight:500;
+        }
+
+        /* 输入框聚焦 */
+        .form-control:focus{
+            border-color:#7c6ee6;
+            box-shadow:0 0 0 0.2rem rgba(124,110,230,.25);
+        }
+
+        /* 主按钮：蓝紫渐变 */
+        .btn-success{
+            background:linear-gradient(135deg,#6a5af9,#8b7cfb);
+            border:none;
+        }
+        .btn-success:hover{
+            background:linear-gradient(135deg,#5a4fcf,#7c6ee6);
+        }
+
+        /* 次按钮：浅紫 */
+        .btn-warning{
+            background:#ede9fe;
+            border:1px solid #c7d2fe;
+            color:#5a4fcf;
+        }
+        .btn-warning:hover{
+            background:#ddd6fe;
+            color:#4f46e5;
+        }
+
+        /* 校验提示文字 */
+        .Validform_checktip{
+            color:#6b7280;
+        }
+    </style>
 </head>
 <body>
 	<c:if test="${!empty adminMessage}">

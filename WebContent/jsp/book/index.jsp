@@ -27,6 +27,67 @@
 		.dropdown-menu{
 			margin:0;
 		}
+        /* ===== 加入购物车按钮 ===== */
+        .btn-buy {
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            border: none;
+            color: #fff;
+            border-radius: 30px;
+            padding: 10px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all .3s;
+        }
+
+        .btn-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102,126,234,.45);
+        }
+
+        .buy_pro {
+            margin-top: 20px;
+        }
+
+        .buy_pro + p {
+            font-size: 13px;
+            color: #888;
+            margin-top: 10px;
+        }
+        /* ===== 弹窗样式 ===== */
+        .modal-content {
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .modal-body {
+            font-size: 22px;
+            color: #4caf50;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .modal-footer {
+            background: #fafbff;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-top: none;
+        }
+
+        .modal-footer .btn-default {
+            background: #f1f3ff;
+            border: none;
+            color: #667eea;
+            border-radius: 30px;
+            padding: 8px 18px;
+        }
+
+        .modal-footer .btn-success {
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            border: none;
+            border-radius: 30px;
+            padding: 8px 22px;
+        }
 	</style>
 
 </head>
@@ -87,12 +148,12 @@
 	  	<div class="modal-dialog modal-sm">
 	    	<div class="modal-content">
 	    		<div class="modal-body" style="color:green;font-size:24px;">
-				  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp商品已成功加入购物车！
+				  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp已成功加入购物车！
 				</div>
 
 	      		<div class="modal-footer">
-	      			<a href="javascript:void(0)" type="button" class="btn btn-default" data-dismiss="modal">返回继续购物</a>
-			        <a href="jsp/book/cart.jsp" type="button" class="btn btn-success">立即去结算</a>
+	      			<a href="javascript:void(0)" type="button" class="btn btn-default" data-dismiss="modal">继续购物</a>
+			        <a href="jsp/book/cart.jsp" type="button" class="btn btn-success">查看购物车</a>
 			    </div>
 	    	</div>
 	  	</div>

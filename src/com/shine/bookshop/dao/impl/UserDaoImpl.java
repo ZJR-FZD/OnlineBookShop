@@ -11,7 +11,7 @@ import com.shine.bookshop.dao.UserDao;
 import com.shine.bookshop.util.DbUtil;
 
 /** 
-* @version 创建时间：2017年10月24日 下午7:26:31 
+* @version 创建时间：2025年12月13日 下午7:26:31
 */
 public class UserDaoImpl implements UserDao {
 

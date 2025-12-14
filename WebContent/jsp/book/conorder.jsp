@@ -22,48 +22,123 @@
 <link href="css/book/head_footer.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/book/addcart.js"></script>
 <style type="text/css">
-	.wrapper .main h3{
-		border-bottom: 1px #ccc solid;
-		padding:5px 0;
-		text-align: center;
-	}
-	.wrapper .main .info,.wrapper .main .payMethod,.wrapper .main .pro,.wrapper .main .settle{
-		margin:25px 0;
-	}
-	.wrapper .main .row>h4{
-		font-size: 22px;
-		font-weight: bold;
-	}
-	.wrapper .main .info .default {
-		border:1px #ccc solid;
-	}
-	.wrapper .main .pro .prolist td{
-		height:50px;
-		line-height: 50px;
-	}
-	.wrapper .main .settle .settle-info{
-		border:1px #ccc solid;
-		padding:20px ;
-		font-size:16px;
-		margin:0;
-	}
-	.wrapper .main .settle .settle-info .settle-li>div{
-		line-height: 40px;
-	}
-	.wrapper .main .settle .settle-info span{
-		display:inline-block;
-		width:120px;
-		text-align:right;
-	}
-	.wrapper .main .settle .settle-info .totprice {
-		padding:10px 0;
-		font-size: 28px;
-		
-	}
-	.wrapper .main .settle .settle-info .totprice b{
-		color:red;
-	}
-	
+/* ===== 确认订单页 - 蓝紫风格 ===== */
+
+.wrapper .main h3 {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: #667eea;
+    border-bottom: none;
+}
+
+/* 公共卡片样式 */
+.wrapper .main .info,
+.wrapper .main .payMethod,
+.wrapper .main .pro,
+.wrapper .main .settle {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 25px;
+    margin: 25px 0;
+    box-shadow: 0 8px 30px rgba(102,126,234,0.15);
+}
+
+/* 小标题 */
+.wrapper .main .row > h4 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #5a5f8f;
+}
+
+/* 收货信息 */
+.wrapper .main .info .default {
+    border: none;
+    background: linear-gradient(135deg, #f5f7ff, #f0ecff);
+    border-radius: 14px;
+    padding: 15px;
+}
+
+.wrapper .main .info .default b {
+    font-size: 16px;
+    color: #667eea;
+}
+
+/* 支付方式 */
+.wrapper .main .payMethod label {
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+/* 商品表格 */
+.wrapper .main .pro table {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.wrapper .main .pro table th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    text-align: center;
+    border: none !important;
+}
+
+.wrapper .main .pro table td {
+    vertical-align: middle !important;
+    border-color: #eee;
+}
+
+.wrapper .main .pro table a {
+    color: #667eea;
+    font-weight: 500;
+}
+
+.wrapper .main .pro table a:hover {
+    color: #764ba2;
+}
+
+/* 结算信息 */
+.wrapper .main .settle .settle-info {
+    border: none;
+    background: linear-gradient(135deg, #f8f9ff, #f3efff);
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.wrapper .main .settle .settle-info span {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+    color: #555;
+}
+
+/* 应付金额 */
+.wrapper .main .settle .settle-info .totprice {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.wrapper .main .settle .settle-info .totprice b {
+    color: #ff4d6d;
+}
+
+/* 提交订单按钮 */
+.wrapper .main .settle .btn-success {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.wrapper .main .settle .btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102,126,234,0.4);
 }
 </style>
 
@@ -74,16 +149,25 @@
 		<div class="wrapper">
 			<div class="main container">
 				<h3>
-					<span>确认订单</span>
+					<span>订单详情</span>
 				</h3>
 				<div class="container">
 					<div class="info row">
-						<h4 class="col-md-12">收货信息:</h4>
-						<div class="col-md-3 default">
-							<b>${landing.name }</b>
-							<p>${landing.address }</p>
-							<p>${landing.tell }</p>
-						</div>
+						<h4 class="col-md-12">收货信息：</h4>
+                        <div class="col-md-3 default">
+                            <p>
+                                <strong>收货人：</strong>
+                                <span>${landing.name}</span>
+                            </p>
+                            <p>
+                                <strong>收货地址：</strong>
+                                <span>${landing.address}</span>
+                            </p>
+                            <p>
+                                <strong>联系电话：</strong>
+                                <span>${landing.tell}</span>
+                            </p>
+                        </div>
 					</div>
 					<div class="payMethod row">
 						<h4 class="col-md-12">支付方式:</h4>

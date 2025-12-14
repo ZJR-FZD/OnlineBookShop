@@ -30,6 +30,6 @@
 	</style>
 </head>
 <body>
-	<h2>欢迎-${adminUser.name}-登陆书店后台管理系统</h2>
+	<h2>欢迎登陆当当小书屋后台管理系统！</h2>
 </body>
 </html>

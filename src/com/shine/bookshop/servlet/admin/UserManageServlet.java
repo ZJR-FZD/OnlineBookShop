@@ -7,14 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shine.bookshop.bean.Admin;
 import com.shine.bookshop.bean.PageBean;
 import com.shine.bookshop.bean.User;
-import com.shine.bookshop.dao.AdminDao;
-import com.shine.bookshop.dao.OrderDao;
 import com.shine.bookshop.dao.UserDao;
 import com.shine.bookshop.dao.impl.AdminDaoImpl;
-import com.shine.bookshop.dao.impl.OrderDaoImpl;
 import com.shine.bookshop.dao.impl.UserDaoImpl;
 
 import net.sf.json.JSONObject;
@@ -70,12 +66,12 @@ public class UserManageServlet extends HttpServlet {
 		case "detail":
 			datail(request,response);
 			break;
-		case "seach":
-			seachUser(request,response);
+		case "search":
+			searchUser(request,response);
 		}
 	}
 
-	private void seachUser(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+	private void searchUser(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 		UserDao ud=new UserDaoImpl();
 		int curPage=1;
 		String page=request.getParameter("page");

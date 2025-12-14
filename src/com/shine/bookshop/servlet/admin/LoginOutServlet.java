@@ -22,7 +22,7 @@ public class LoginOutServlet extends HttpServlet {
 	 */  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().removeAttribute("admin_user");
-		response.sendRedirect("jsp/admin/login.jsp");//这里跳转不能用jsp/login/login.jsp,过滤器会不拦截
+		response.sendRedirect("jsp/book/index.jsp");
 	}
 
 	/**

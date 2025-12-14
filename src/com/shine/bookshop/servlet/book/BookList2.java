@@ -29,12 +29,12 @@ public class BookList2 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String seachname = new String(request.getParameter("seachname").getBytes("iso-8859-1"),"utf-8");
-		String seachname1 = request.getParameter("seachname");
-		bookList(request,response,seachname1);
+		String searchname = new String(request.getParameter("searchname").getBytes("iso-8859-1"),"utf-8");
+		String searchname1 = request.getParameter("searchname");
+		bookList(request,response,searchname1);
 	}
 
-	private void bookList(HttpServletRequest request, HttpServletResponse response, String seachname) throws ServletException, IOException {
+	private void bookList(HttpServletRequest request, HttpServletResponse response, String searchname) throws ServletException, IOException {
 		BookDao bd = new BookDaoImpl();
 		int curPage = 1;
 		String page = request.getParameter("page");
@@ -44,12 +44,12 @@ public class BookList2 extends HttpServlet {
 		
 		PageBean pb=null;
 		List<Book> bookList=new ArrayList<Book>();
-		if(seachname == null || seachname == "") {
+		if(searchname == null || searchname == "") {
 			pb = new PageBean(curPage, MAX_LIST_SIZE, bd.bookReadCount());
 			bookList = bd.bookList(pb);
 		}else {
-			pb = new PageBean(curPage, MAX_LIST_SIZE, bd.bookReadCount(seachname));
-			bookList = bd.bookList(pb,seachname);
+			pb = new PageBean(curPage, MAX_LIST_SIZE, bd.bookReadCount(searchname));
+			bookList = bd.bookList(pb,searchname);
 		}
 		request.setAttribute("title", "所有图书");
 		
